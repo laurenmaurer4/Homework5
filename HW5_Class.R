@@ -178,6 +178,7 @@ setMethod("*", signature(e1 = "sparse_numeric", e2 = "sparse_numeric"),
           function(e1, e2) sparse_mult(e1, e2))
 
 
+# Coerce
 setAs("numeric", "sparse_numeric",
       function(from){
         pos <- which(from != 0)
@@ -193,6 +194,8 @@ setAs("sparse_numeric", "numeric",
         out
       })
 
+
+## Show
 setMethod("show", "sparse_numeric",
           function(object){
             cat("sparse_numeric vector\n")
@@ -201,6 +204,8 @@ setMethod("show", "sparse_numeric",
             cat("Values:", object@value, "\n")
           })
 
+
+## Plot
 setMethod("plot", c("sparse_numeric", "sparse_numeric"),
           function(x, y, ...){
             if(x@length != y@length)
@@ -223,6 +228,7 @@ setMethod("plot", c("sparse_numeric", "sparse_numeric"),
           })
 
 
+## Additional method
 setMethod("summary", "sparse_numeric",
           function(object) {
             cat("Summary for sparse_numeric\n")
